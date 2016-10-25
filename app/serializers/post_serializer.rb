@@ -18,20 +18,11 @@
 #  highlighted        :boolean          default(FALSE)
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+class PostSerializer < ActiveModel::Serializer
+  attributes :title, :description, :date, :image_url, :highlighted, :post_url
 
-one:
-  title: MyString
-  date: 2016-10-25 18:17:34
-  image: MyString
-  post_url: MyString
-  state: 
-  description: MyText
-
-two:
-  title: MyString
-  date: 2016-10-25 18:17:34
-  image: MyString
-  post_url: MyString
-  state: 
-  description: MyText
+  def image_url
+    return nil if object.image.nil?
+    object.highlighted? ? object.image.url(:large) : object.image.url(:small)
+  end
+end

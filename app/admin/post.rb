@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-  permit_params :title, :date, :image, :post_url, :state, :description
+  permit_params :title, :date, :image, :post_url, :state, :description, :highlighted
 
   form do |f|
     f.semantic_errors
@@ -9,7 +9,8 @@ ActiveAdmin.register Post do
       input :image, :as => :file
       input :post_url, :required => true
       input :state, :as => :boolean, :label => 'Published?'
-      input :description, :as => :ckeditor
+      input :highlighted, :as => :boolean, :label => 'Highlighted?'
+      input :description, :as => :ckeditor, :label => 'Content'
     end
     f.actions
   end
@@ -19,14 +20,29 @@ ActiveAdmin.register Post do
       row :title
       row :date
       row :image do |post|
-        image_tag post.image.url(:medium)
+        image_tag post.image.url(:small)
       end
       row :post_url
       row('Published?') { |post| status_tag post.state == 1 }
-      row :description do |post|
+      row('Highlighted?') { |post| status_tag post.highlighted == 1 }
+      row 'Content' do |post|
         post.description.html_safe
       end
     end
   end
+
+  index :download_links => false do
+    column :title
+    column :date
+    column('Published?') { |post| status_tag post.state == 1 }
+    column('Highlighted?') { |post| status_tag post.highlighted }
+    actions
+  end
+
+  filter :title
+  filter :data
+  filter :state, :as => :check_boxes, :label => 'Published'
+  filter :highlighted, :as => :check_boxes, :label => 'Highlighted?'
+
 
 end

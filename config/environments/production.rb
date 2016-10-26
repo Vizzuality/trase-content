@@ -85,6 +85,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: 'traceplatform.org/content', port: 3000 }
-  config.relative_url_root = '/content'
+  config.relative_url_root = ENV['RAILS_RELATIVE_URL_ROOT']
 
 end
+Rails.application.routes.default_url_options[:script_name] = ENV['RAILS_RELATIVE_URL_ROOT']

@@ -18,7 +18,9 @@ ActiveAdmin.register Post do
   show do
     attributes_table do
       row :title
-      row :date
+      row :date do |post|
+        post.date.strftime('%d-%m-%Y')
+      end
       row :image do |post|
         image_tag post.image.url(:small)
       end
@@ -33,7 +35,7 @@ ActiveAdmin.register Post do
 
   index :download_links => false do
     column :title
-    column :date
+    column('Date') { |post| post.date.strftime('%d-%m-%Y') }
     column('Published?') { |post| status_tag post.state == 1 }
     column('Highlighted?') { |post| status_tag post.highlighted }
     actions

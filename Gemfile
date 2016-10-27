@@ -20,6 +20,7 @@ gem 'paperclip', '~> 5.0.0'
 
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'dotenv-rails', '~> 2.1'
+gem 'rack-cors', '~> 0.4'
 
 
 group :development, :test do

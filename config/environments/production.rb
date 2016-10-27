@@ -89,3 +89,8 @@ Rails.application.configure do
 
 end
 Rails.application.routes.default_url_options[:script_name] = ENV['RAILS_RELATIVE_URL_ROOT']
+
+Ckeditor.setup do |config|
+  config.asset_path = "//traseplatform.org/content/assets/ckeditor/"
+  config.js_config_url = "/content/assets/ckeditor/config.js"
+end

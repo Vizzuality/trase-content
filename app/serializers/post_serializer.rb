@@ -23,6 +23,6 @@ class PostSerializer < ActiveModel::Serializer
 
   def image_url
     return nil unless object.image.exists?
-    object.highlighted? ? object.image.url(:large) : object.image.url(:small)
+    URI(request.url) + (object.highlighted? ? object.image.url(:large) : object.image.url(:small))
   end
 end

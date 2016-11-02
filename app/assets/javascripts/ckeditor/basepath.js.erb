@@ -1,6 +1,8 @@
 <%
   base_path = ''
-  base_path << "/#{ENV['RAILS_RELATIVE_URL_ROOT']}/"
+  unless ENV['RAILS_RELATIVE_URL_ROOT'].empty?
+    base_path << "/#{ENV['RAILS_RELATIVE_URL_ROOT']}/"
+  end
   base_path << Rails.application.config.assets.prefix
   base_path << '/ckeditor/'
 %>

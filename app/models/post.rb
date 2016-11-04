@@ -16,6 +16,7 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  highlighted        :boolean          default(FALSE)
+#  title_color        :string
 #
 
 class Post < ApplicationRecord

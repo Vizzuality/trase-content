@@ -16,10 +16,11 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  highlighted        :boolean          default(FALSE)
+#  title_color        :string
 #
 
 class PostSerializer < ActiveModel::Serializer
-  attributes :title, :description, :date, :image_url, :highlighted, :post_url
+  attributes :title, :title_color, :description, :date, :image_url, :highlighted, :post_url
 
   def image_url
     return nil unless object.image.exists?

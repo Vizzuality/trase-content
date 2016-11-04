@@ -1,10 +1,11 @@
 ActiveAdmin.register Post do
-  permit_params :title, :date, :image, :post_url, :state, :description, :highlighted
+  permit_params :title, :title_color, :date, :image, :post_url, :state, :description, :highlighted
 
   form do |f|
     f.semantic_errors
     inputs do
       input :title, :required => true
+      input :title_color, :required => false
       input :date, :as => :date_select, :required => true, :label => 'Publishing date'
       input :image, :as => :file
       input :post_url, :required => true
@@ -18,6 +19,7 @@ ActiveAdmin.register Post do
   show do
     attributes_table do
       row :title
+      row :title_color
       row :date do |post|
         post.date.strftime('%d-%m-%Y')
       end

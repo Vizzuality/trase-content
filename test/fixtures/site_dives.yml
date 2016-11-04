@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: site_dives
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  description :text
+#  page_url    :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  page_url: MyString
+
+two:
+  title: MyString
+  description: MyText
+  page_url: MyString

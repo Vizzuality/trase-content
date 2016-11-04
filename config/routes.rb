@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  resources :scaffolds
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root to: "home#index"
+
+  get '/posts', to: "api#posts"
+  get '/site_dive/:id', to: "api#site_dive"
 end

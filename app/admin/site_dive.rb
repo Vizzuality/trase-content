@@ -15,10 +15,10 @@ ActiveAdmin.register SiteDive do
   show do
     attributes_table do
       row :title
-      row 'Content' do |site_dive|
+      row('Content', style: 'word-break: break-all') do |site_dive|
         site_dive.description.html_safe
       end
-      row 'Site dive link' do |site_dive|
+      row('Site dive link', style: 'word-break: break-all') do |site_dive|
         site_dive.site_dive_url
       end
     end

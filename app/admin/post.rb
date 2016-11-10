@@ -26,7 +26,7 @@ ActiveAdmin.register Post do
       row :image do |post|
         image_tag post.image.url(:small)
       end
-      row :post_url
+      row(:post_url, style: 'word-break: break-all')
       row('Published?') { |post| status_tag post.state == 1 }
       row('Highlighted?') { |post| status_tag post.highlighted == 1 }
       row 'Content' do |post|

@@ -17,6 +17,6 @@ class SiteDive < ApplicationRecord
 
   def site_dive_url
     linker = (self.page_url.include?('?') ? '&' : '?')
-    self.page_url + linker + 'site_dive_id=' + self.id.to_s
+    self.page_url + linker + 'story=' + self.id.to_s
   end
 end

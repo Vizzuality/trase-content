@@ -19,3 +19,10 @@
   width: 79.5% !important;
   overflow: hidden;
 }
+
+#index_table_posts .col-url {
+  word-break: break-all;
+}
+#index_table_posts .col-date {
+  min-width: 100px;
+}

@@ -40,6 +40,7 @@ ActiveAdmin.register Post do
     column('Date') { |post| post.date.strftime('%d-%m-%Y') }
     column('Published?') { |post| status_tag post.state == 1 }
     column('Highlighted?') { |post| status_tag post.highlighted }
+    column('URL') { |post| post.complete_post_url }
     actions
   end
 

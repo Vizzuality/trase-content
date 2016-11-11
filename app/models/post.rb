@@ -30,6 +30,11 @@ class Post < ApplicationRecord
 
   after_initialize :set_default_date
 
+  def complete_post_url
+    return self.post_url if self.post_url.start_with?('http://', 'https://')
+    'https://'+self.post_url
+  end
+
   def set_default_date
     self.date ||= DateTime.now
   end

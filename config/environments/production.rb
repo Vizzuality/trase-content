@@ -84,12 +84,12 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_controller.asset_host = "https://traseplatform.org"
+  config.action_controller.asset_host = "http://trase.earth"
   config.relative_url_root = '/content'
 end
 Rails.application.routes.default_url_options[:script_name] = ENV['RAILS_RELATIVE_URL_ROOT']
 
 Ckeditor.setup do |config|
-  config.asset_path = "//traseplatform.org/content/assets/ckeditor/"
+  config.asset_path = "http://trase.earth/content/assets/ckeditor/"
   config.js_config_url = "/content/assets/ckeditor/config.js"
 end

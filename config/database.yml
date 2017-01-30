@@ -23,7 +23,9 @@ test:
 
 staging:
   <<: *default
-  database: trase_staging
+  database: <%= ENV['TRASE_CONTENT_DATABASE_NAME'] %>
+  username: <%= ENV['TRASE_CONTENT_DATABASE_USER'] %>
+  password: <%= ENV['TRASE_CONTENT_DATABASE_PASSWORD'] %>
 
 production:
   <<: *default

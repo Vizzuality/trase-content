@@ -1,3 +1,4 @@
+=begin
 require 'fileutils'
 
 desc "Create nondigest versions of all ckeditor digest assets"
@@ -9,3 +10,4 @@ task "assets:precompile" do
     FileUtils.cp file, nondigest, verbose: true
   end
 end
+=end

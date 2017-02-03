@@ -15,7 +15,7 @@ gem 'devise', '~> 4.2'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
-gem 'ckeditor', '~> 4.2.2'
+gem 'ckeditor', git: "https://github.com/galetahub/ckeditor.git"
 gem 'paperclip', '~> 5.0.0'
 
 gem 'active_model_serializers', '~> 0.10.0'

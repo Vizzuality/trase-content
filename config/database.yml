@@ -3,7 +3,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['TRASE_CONTENT_DATABASE_NAME'] %>
+  host: <%= ENV['TRASE_CONTENT_DATABASE_HOST'] %>
   username: <%= ENV['TRASE_CONTENT_DATABASE_USER'] %>
   password: <%= ENV['TRASE_CONTENT_DATABASE_PASSWORD'] %>
   port: <%= ENV.fetch("TRASE_CONTENT_DATABASE_PORT") { 5432 } %>
@@ -13,15 +13,18 @@ default: &default
 
 development:
   <<: *default
+  database: trase_content_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  database: trase_content_test
 
-staging:
+staging: &staging
   <<: *default
+  database: <%= ENV['TRASE_CONTENT_DATABASE_NAME'] %>
 
 production:
-  <<: *default
+  <<: *staging

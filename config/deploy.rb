@@ -20,3 +20,5 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
   after 'deploy:publishing', 'deploy:restart'
 end
+
+set :rvm_ruby_version, '2.4.1'

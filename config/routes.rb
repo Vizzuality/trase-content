@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   get '/posts', to: "api#posts"
   get '/site_dive/:id', to: "api#site_dive"
+  get '/tweets', to: "api#tweets"
 end

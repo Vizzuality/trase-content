@@ -1,7 +1,7 @@
 module ActiveAdmin
   module Views
     class Footer < Component
-      def build
+      def build(arg)
       end
     end
   end

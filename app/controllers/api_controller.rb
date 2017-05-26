@@ -18,7 +18,27 @@ class ApiController < ApplicationController
       config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
     end
 
-    # render json: client.home_timeline
-    render json: client.home_timeline.map {|tweet| {'text' => tweet.text, 'screen_name' => tweet.user.screen_name, 'created_at' => tweet.created_at}}
+    tweets = client.user_timeline
+
+    tweets = tweets.map {|tweet|
+      {'id' => tweet.id, 'text' => hidrate_tweet(tweet.full_text, tweet.urls, tweet.hashtags, tweet.user_mentions), 'screen_name' => tweet.user.screen_name, 'created_at' => tweet.created_at}
+    }
+    render json: tweets
+  end
+
+  private
+
+  def hidrate_tweet(text, urls, hashtags, mentions)
+    processed = text.dup
+    urls.each do |url|
+      processed.gsub! url.url, "<a target='_blank' rel='noopener noreferrer' href='#{url.expanded_url}'>#{url.display_url}</a>"
+    end
+    hashtags.each do |hashtag|
+      processed.gsub! "##{hashtag.text}", "<a target='_blank' rel='noopener noreferrer' href='https://twitter.com/hashtag/#{hashtag.text}'>##{hashtag.text}</a>"
+    end
+    mentions.each do |mention|
+      processed.gsub! "@#{mention.screen_name}", "<a target='_blank' rel='noopener noreferrer' href='https://twitter.com/#{mention.screen_name}'>@#{mention.screen_name}</a>"
+    end
+    processed
   end
 end
